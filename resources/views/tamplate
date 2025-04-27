@@ -1,0 +1,15 @@
+@extends('layout.main')
+
+@section('title', 'Iisi judul halaman di sini')
+
+@section('css')
+
+@endsection
+
+@section('content')
+
+@endsection
+
+@section('js')
+
+@endsection
