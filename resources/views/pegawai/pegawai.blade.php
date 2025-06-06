@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Halaman Data Barang')
+@section('title', 'Halaman Data Pegawai')
 
 @section('css')
 
@@ -9,15 +9,15 @@
 @section('content')
     <div class="container-fluid">
         <div class="container m-3 d-flex justify-content-end align-items-center">
-            <a href="{{ route('barang.create') }}" class="btn btn-primary add-btn light">Buat Data Barang</a>
+            <a href="{{ route('pegawai.create') }}" class="btn btn-primary add-btn light">Buat Data Pegawai</a>
         </div>
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Data Tables Barang PT Pertamina Kilang Internasional RU VI
+                <h6 class="m-0 font-weight-bold text-primary">Data Tables Pegawai PT Pertamina Kilang Internasional RU VI
                     Balongan</h6>
             </div>
             <div class="search mt-3">
-                <form action="{{ route('barang.index') }}" method="GET" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                <form action="{{ route('pegawai.index') }}" method="GET" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                     <div class="input-group">
                         <input type="text" name="q" value="{{ request('q') }}" class="form-control bg-light border-0 small" placeholder="Search for..."
                             aria-label="Search" aria-describedby="basic-addon2">
@@ -35,26 +35,25 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Images</th>
-                                <th>Nama Barang</th>
-                                <th>Kategori</th>
-                                <th>Kode Barang</th>
-                                <th>Stok</th>
-                                <th>Tanggal Masuk</th>
+                                <th>images</th>
+                                <th>Nama Pegawai</th>
+                                <th>Alamat Pegawai</th>
+                                <th>Nomor Telp Pegawai</th>
+                                <th>Jabatan</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($barang as $key => $item)
+                            @foreach ($pegawai as $key => $item)
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
                                     <td><img src="{{ asset($item->images) }}" class="img-fluid rounded" style="height: 40px"
                                             alt=""></td>
-                                    <td>{{ $item->nama_barang }}</td>
-                                    <td>{{ $item->kategori }}</td>
-                                    <td>{{ $item->kode_barang }}</td>
-                                    <td>{{ $item->stock }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($item->tanggal_masuk)->format('d-m-Y') }}</td>
+                                    <td><a href="{{ route('pegawai.detail', $item->id) }}" class="text-dark"
+                                            style="text-decoration: none">{{ $item->nama_pegawai }}</a></td>
+                                    <td>{{ $item->alamat_pegawai }}</td>
+                                    <td>{{ $item->no_telp }}</td>
+                                    <td>{{ $item->jabatan }}</td>
                                     <td>
                                         <button type="button" onclick="confirmDelete({{ $item->id }})"
                                             class="btn btn-danger">Hapus</button>
@@ -62,8 +61,7 @@
                                             @csrf
                                             @method('DELETE')
                                         </form>
-                                        <a href="{{ route('barang.edit', $item->id) }}" class="btn btn-warning">Edit</a>
-                                        <a href="{{ route('barang.detail', $item->id) }}" class="btn btn-dark">Detail</a>
+                                        <a href="{{ route('pegawai.edit', $item->id) }}" class="btn btn-warning">Edit</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -101,7 +99,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     const form = document.getElementById('delete-form');
-                    form.action = `/admin/barang/delete/${id}`;
+                    form.action = `/admin/pegawai/delete/${id}`;
                     form.submit();
                 }
             });
@@ -116,5 +114,12 @@
                 timer: 2000
             });
         @endif
+
+        document.querySelector('input[name="q"]').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                this.closest('form').submit();
+            }
+        });
     </script>
 @endsection

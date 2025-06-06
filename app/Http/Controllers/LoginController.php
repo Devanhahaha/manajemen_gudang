@@ -34,8 +34,11 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/dashboard')
-                ->with('success', 'Login successful');
+            if (Auth::user()->getRoleNames()->first() == 'admin') {
+                return redirect()->route('dashboard')->with('success', 'Login Success');
+            } else if (Auth::user()->getRoleNames()->first() == 'pegawai') {
+                return redirect()->route('dashboardPegawai')->with('success', 'Login Success');
+            }
         } else {
             return redirect()->back()->with('error', 'Invalid credentials');
         }

@@ -13,15 +13,10 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a href="{{ route('dashboard') }}" 
-            class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+        <a href="{{ route('dashboardpegawai') }}" 
+            class="nav-link {{ request()->routeIs('dashboardpegawai') ? 'active' : '' }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link {{ request()->routeIs('pegawai.index') ? 'active' : '' }}" href="{{ route('pegawai.index') }}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Pegawai</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLaporan1"
@@ -31,7 +26,7 @@
         </a>
         <div id="collapseLaporan1" class="collapse" aria-labelledby="headingLaporan" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('barang.index') }}">Data Barang</a>
+                <a class="collapse-item" href="{{ route('barangPegawai.index') }}">Data Barang</a>
             </div>
         </div>
     </li>    
@@ -43,7 +38,7 @@
         </a>
         <div id="collapseLaporan" class="collapse" aria-labelledby="headingLaporan" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('barang-keluar.index') }}">Laporan Barang Keluar</a>
+                <a class="collapse-item" href="{{ route('barang-keluarPegawai.index') }}">Laporan Barang Keluar</a>
             </div>
         </div>
     </li>    

@@ -1,0 +1,59 @@
+@extends('layouts.main')
+
+@section('title', 'Halaman Detail Barang')
+
+@section('css')
+
+@endsection
+
+@section('content')
+<div class="page-content">
+    <div class="container text-center mt-4">
+        @if ($barang->images)
+            <img src="{{ asset($barang->images) }}" class="img-fluid rounded shadow mb-4" style="max-height: 300px;" alt="{{ $barang->nama_barang }}">
+        @else
+            <p class="text-muted">Foto tidak tersedia.</p>
+        @endif
+    </div>
+
+    <div class="content-body pt-3">
+        <div class="container">
+            <div class="card shadow p-4 mb-4">
+                <h4 class="mb-2 text-center">{{ $barang->nama_barang }}</h4>
+                <p class="text-center text-warning">{{ $barang->kategori }}</p>
+            </div>
+
+            <div class="card shadow p-3 mb-3">
+                <h6 class="mb-1 text-muted">Kode Barang</h6>
+                <p class="mb-0 text-dark">{{ $barang->kode_barang }}</p>
+            </div>
+
+            <div class="card shadow p-3 mb-3">
+                <h6 class="mb-1 text-muted">Stock</h6>
+                <p class="mb-0 text-dark">{{ $barang->stock }}</p>
+            </div>
+
+            <div class="card shadow p-3 mb-3">
+                <h6 class="mb-1 text-muted">Tanggal Masuk</h6>
+                <p class="mb-0 text-dark">{{ $barang->tanggal_masuk }}</p>
+            </div>
+
+            <div class="card shadow p-3 mb-5">
+                <h5 class="text-center mb-2">About Us</h5>
+                <p class="mb-0 text-dark text-justify">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, ad.
+                </p>
+            </div>
+
+            <div class="text-center mb-3">
+                <a href="{{ route('barang.index') }}" class="btn btn-secondary me-2">← Kembali</a>
+                <a href="{{ route('barang.edit', $barang->id) }}" class="btn btn-primary">✎ Edit</a>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+
+@section('js')
+
+@endsection

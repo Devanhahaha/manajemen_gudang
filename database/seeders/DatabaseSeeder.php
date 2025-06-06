@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             DummyBarangSeeder::class,
             DummyPegawaiSeeder::class,
+            BarangKeluarSeeder::class,
             // Add other seeders here
         ]);
     }

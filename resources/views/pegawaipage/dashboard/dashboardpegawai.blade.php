@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.pegawai.main')
 
 @section('title', 'Dashboard')
 
@@ -9,12 +9,6 @@
             font-weight: 700;
             color: #2c3e50;
             font-family: Georgia;
-        }
-
-        .dashboard-namerole {
-            font-size: 1rem;
-            font-weight: 500;
-            color: #2c3e50;
         }
 
         .dashboard-subtitle {
@@ -42,12 +36,12 @@
     <div class="container-fluid">
         <div class="d-flex align-items-center justify-content-between mb-4 dashboard-header">
             <div class="text-start">
-                <div class="dashboard-title">Selamat Datang di Sistem Manajemen Gudang</div>
+                <div class="dashboard-title">Selamat Datang di Sistem Manajemen Gudang</div>            
                 <div class="dashboard-subtitle">PT Pertamina Internasional</div>
                 <div class="dashboard-location text-muted fst-italic mt-1">RU VI Balongan</div>
-                <div class="dashboard-namerole">
+                <div class="dashboard-title">
                     Anda Login Sebagai {{ Auth::user()->getRoleNames()->first() }}
-                </div>   
+                </div>    
                 <p class="mt-3 text-secondary fw-normal" style="font-family: Verdana">
                     Sistem ini dirancang untuk memudahkan pengelolaan data barang, pegawai, dan laporan aktivitas gudang secara efisien dan terintegrasi.
                     Pastikan Anda memeriksa setiap update terbaru pada menu di sebelah kiri.
@@ -56,25 +50,6 @@
         </div>        
         <!-- Content Row -->
         <div class="row">
-
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-primary shadow h-100 py-2">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                    <a href="{{ route('pegawai.index') }}">Data Pegawai</a>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-center align-items-center">
-                                <i class="fas fa-clipboard-list fa-2x text-gray-300 m-2"> {{ $totalData }}</i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
                 <div class="card border-left-success shadow h-100 py-2">
@@ -82,7 +57,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                    <a href="{{ route('barang.index') }}">Data Barang</a>
+                                    <a href="{{ route('barangPegawai.index') }}">Data Barang</a>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-center align-items-center">
@@ -100,7 +75,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-info text-uppercase mb-1"><a
-                                        href="{{ route('barang-keluar.index') }}">Laporan Barang Keluar</a>
+                                        href="{{ route('barang-keluarPegawai.index') }}">Laporan Barang Keluar</a>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-center align-items-center">

@@ -10934,6 +10934,7 @@ header.masthead {
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
+  transition: background-image 1.5s ease-in-out;
 }
 header.masthead h1, header.masthead .h1 {
   font-size: 2.25rem;

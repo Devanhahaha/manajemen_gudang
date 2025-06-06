@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.pegawai.main')
 
 @section('title', 'Halaman Data Barang')
 
@@ -9,7 +9,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="container m-3 d-flex justify-content-end align-items-center">
-            <a href="{{ route('barang.create') }}" class="btn btn-primary add-btn light">Buat Data Barang</a>
+            <a href="{{ route('barangPegawai.create') }}" class="btn btn-primary add-btn light">Buat Data Barang</a>
         </div>
         <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -17,7 +17,7 @@
                     Balongan</h6>
             </div>
             <div class="search mt-3">
-                <form action="{{ route('barang.index') }}" method="GET" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                <form action="{{ route('barangPegawai.index') }}" method="GET" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                     <div class="input-group">
                         <input type="text" name="q" value="{{ request('q') }}" class="form-control bg-light border-0 small" placeholder="Search for..."
                             aria-label="Search" aria-describedby="basic-addon2">
@@ -62,8 +62,8 @@
                                             @csrf
                                             @method('DELETE')
                                         </form>
-                                        <a href="{{ route('barang.edit', $item->id) }}" class="btn btn-warning">Edit</a>
-                                        <a href="{{ route('barang.detail', $item->id) }}" class="btn btn-dark">Detail</a>
+                                        <a href="{{ route('barangPegawai.edit', $item->id) }}" class="btn btn-warning">Edit</a>
+                                        <a href="{{ route('barangPegawai.detail', $item->id) }}" class="btn btn-dark">Detail</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -101,7 +101,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     const form = document.getElementById('delete-form');
-                    form.action = `/admin/barang/delete/${id}`;
+                    form.action = `/pegawai/barang/delete/${id}`;
                     form.submit();
                 }
             });

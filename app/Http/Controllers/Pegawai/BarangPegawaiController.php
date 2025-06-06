@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Pegawai;
 
 use App\Models\Barang;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
-class BarangController extends Controller
+class BarangPegawaiController extends Controller
 {
-    /**
+   /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
@@ -18,7 +19,7 @@ class BarangController extends Controller
             $query->where('nama_barang', 'like', '%' . $request->q . '%');
         }
         $barang = $query->get();
-        return view('barang.manajemen_barang', compact('barang'));
+        return view('pegawaipage.barang.manajemen_barang', compact('barang'));
     }
 
     /**
@@ -26,7 +27,7 @@ class BarangController extends Controller
      */
     public function create()
     {
-        return view('barang.inbound');
+        return view('pegawaipage.barang.inbound');
     }
 
     /**
@@ -52,7 +53,7 @@ class BarangController extends Controller
             'images' => 'storage/' . $request->file('images')->store('files/barang', 'public'),
         ]);
 
-        return redirect()->route('barang.index')->with('success', 'Data barang berhasil ditambahkan');
+        return redirect()->route('barangPegawai.index')->with('success', 'Data barang berhasil ditambahkan');
     }
 
     /**
@@ -61,7 +62,7 @@ class BarangController extends Controller
     public function show(Barang $barang, $id)
     {
         $barang = Barang::findOrFail($id);
-        return view('barang.detail_barang', compact('barang'));
+        return view('pegawaipage.barang.detail_barang', compact('barang'));
     }
 
     /**
@@ -70,7 +71,7 @@ class BarangController extends Controller
     public function edit(Barang $barang, $id)
     {
         $barang = Barang::findOrFail($id);
-        return view('barang.edit_barang', compact('barang'));
+        return view('pegawaipage.barang.edit_barang', compact('barang'));
     }
 
     /**
@@ -101,7 +102,7 @@ class BarangController extends Controller
 
         $barang->save();
 
-        return redirect()->route('barang.index')->with('success', 'Barang berhasil diupdate');
+        return redirect()->route('barangPegawai.index')->with('success', 'Barang berhasil diupdate');
     }
 
     /**
@@ -111,6 +112,6 @@ class BarangController extends Controller
     {
         $barang = Barang::findOrFail($id);
         $barang->delete();
-        return redirect()->route('barang.index')->with('success', 'Barang Berhasil Dihapus');
+        return redirect()->route('barangPegawai.index')->with('success', 'Barang Berhasil Dihapus');
     }
 }

@@ -27,19 +27,19 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        @include('layouts.sidebar')
+        @include('layouts.pegawai.sidebar')
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
             <div id="content">
-                @include('layouts.header')
+                @include('layouts.pegawai.header')
                 @yield('content')
             </div>
             <!-- End of Main Content -->
 
-            @include('layouts.footer')
+            @include('layouts.pegawai.footer')
 
         </div>
         <!-- End of Content Wrapper -->

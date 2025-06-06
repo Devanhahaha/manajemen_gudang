@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.pegawai.main')
 
 @section('title', 'Halaman Penerimaan Barang')
 
@@ -13,7 +13,7 @@
             <h5 class="mb-0">Form Penerimaan Barang</h5>
         </div>
         <div class="card-body">
-            <form action="{{ route('barang.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('barangPegawai.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="images">Images</label>

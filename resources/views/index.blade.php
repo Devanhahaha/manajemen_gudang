@@ -7,7 +7,7 @@
         <meta name="author" content="" />
         <title>Gudang Manajemen PT Kilang RU VI Balongan</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/logo.png') }}" />
         <!-- Bootstrap Icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Google fonts-->
@@ -38,7 +38,7 @@
             </div>
         </nav>
         <!-- Masthead-->
-        <header class="masthead">
+        <header class="masthead" id="masthead" style="transition-duration: 4ms">
             <div class="container px-4 px-lg-5 h-100">
                 <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
                     <div class="col-lg-8 align-self-end">
@@ -246,5 +246,25 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+        <script>
+            // Array gambar background
+            const images = [
+              "assets/img/bg-pertamina.jpg",
+              "assets/img/bg-2.jpg",
+              "assets/img/bg-3.jpg"
+            ];
+          
+            let index = 0;
+            const masthead = document.getElementById("masthead");
+          
+            setInterval(() => {
+              index = (index + 1) % images.length;
+              masthead.style.backgroundImage = `
+                linear-gradient(to bottom, rgba(92, 77, 66, 0.8), rgba(92, 77, 66, 0.8)),
+                url('${images[index]}')`;
+            }, 5000); // Ganti setiap 5 detik
+          </script>
+          
     </body>
 </html>
