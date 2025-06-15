@@ -17,7 +17,7 @@ class PegawaiController extends Controller
         if ($request->has('q') && $request->q != '') {
             $query->where('nama_pegawai', 'like', '%' . $request->q . '%');
         }
-        $pegawai =  $query->get();
+        $pegawai =  $query->latest()->get();
         return view('pegawai.pegawai', compact('pegawai'));
     }
 

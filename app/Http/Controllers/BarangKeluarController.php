@@ -18,7 +18,7 @@ class BarangKeluarController extends Controller
         if ($request->has('q') && $request->q != '') {
             $query->where('nama_barang', 'like', '%' . $request->q . '%');
         }
-        $barangkeluar = $query->get();
+        $barangkeluar = $query->latest()->get();
         return view('laporan.barang_keluar', compact('barangkeluar'));
     }
 
